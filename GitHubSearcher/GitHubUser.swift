@@ -8,16 +8,30 @@
 
 import Foundation
 
-class GitHubUser{
-    var userName : String
-    var noOfRepos : Int
-    var avatarImg : Data
+struct GitHubUser : Codable{
+    var name : String?
+    var noOfRepos : Int?
+    var avatarUrl : URL?
+    var email : String?
+    var location : String?
+    var followers : Int?
+    var following : Int?
+
     
-    init(userName:String,noOfRepos:Int,avatarImg:Data) {
-        //
-        self.userName = userName
-        self.noOfRepos = noOfRepos
-        self.avatarImg = avatarImg
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case noOfRepos = "public_repos"
+        case avatarUrl = "avatar_url"
+        case email
+        case location
+        case followers
+        case following
+        
+        
     }
+    
+//    init(from decoder: Decoder) throws {
+//        <#code#>
+//    }
     
 }
